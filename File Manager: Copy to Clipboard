@@ -1,0 +1,14 @@
+#!/bin/bash
+
+FILE=$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS
+if [ -d $FILE ]
+then
+	echo $FILE | xclip -sel clip -rmlastnl
+	notify-send "PATH $FILE has been copied to clipboard" --expire-time=500 --app-name="Copy to File" --icon="/home/darkknight-lucifer/Pictures/Icons/distro_icons/512/512_endeavour_blue.png"
+else
+	BASEDIR=$(dirname "$FILE")
+	echo $BASEDIR | xclip -sel clip -rmlastnl
+	notify-send "PATH $BASEDIR has been copied to clipboard" --expire-time=500 --app-name="Copy to NoFile" --icon="/home/darkknight-lucifer/Pictures/Icons/distro_icons/512/512_endeavour_blue.png"
+fi
+## sudo apt install xclip
+## sudo apt install dialog
